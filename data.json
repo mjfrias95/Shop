@@ -1,0 +1,18 @@
+{
+	"products": [
+		{
+			"productID": 4,
+			"productName": "CP",
+			"productDescription": "jfksdlfj",
+			"productQuantity": "23",
+			"productPrice": "23"
+		},
+		{
+			"productID": 5,
+			"productName": "ggsd",
+			"productDescription": "gdfg",
+			"productQuantity": "gdfg",
+			"productPrice": "gdfgd"
+		}
+	]
+}

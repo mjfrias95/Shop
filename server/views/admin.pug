@@ -1,0 +1,88 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title= title
+
+
+    link(rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
+
+  body
+    main#shopVue(role="main" class="container")
+      h1#pageTitle Welcome to Online Shopepee
+      form#addProductForm(action="/" method="POST")
+        .form-group
+          label Name
+          textarea.form-control#productName(type="text" name="productName" v-model="productName")
+        .form-group
+          label Description
+          textarea.form-control#productDescription(type="text" name="productDescription" v-model="productDescription")
+        .form-group
+          label Quantity
+          textarea.form-control#productQuantity(type="text" name="productQuantity" v-model="productQuantity")
+        .form-group
+          label Price
+          textarea.form-control#productPrice(type="text" name ="productPrice" v-model="productPrice")
+        .form-group
+          button.btn.btn-primary(type="button" v-on:click="addproduct") Add Product
+          button.btn#clearBtn(type="button" v-on:click="clear") Clear
+      section
+        table.table#productsTable
+          tr
+            th ProductID
+            th Name
+            th Description
+            th Quantity
+            th Price
+            th Action
+          tr(v-for="product in products")
+            td {{ product.productID }}
+            td {{ product.productName }}
+            td {{ product.productDescription }}
+            td {{ product.productQuantity }}
+            td {{ product.productPrice }}
+            td
+                 button.btn.btn-default(v-on:click="editproduct(product)" /*data-toggle="modal" data-target="#myModal"*/ ) Edit
+               
+                 button.btn.btn-danger(v-on:click="deleteproduct(product)") Delete
+     
+
+link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+  
+
+//- #myModal.modal
+//-   .modal-dialog
+//-     .modal-content
+//-       .modal-header
+//-         h4.modal-title Update Data
+//-         button.close(type='button' data-dismiss='modal') &times;
+//-       .modal-body
+//-         .form-group
+//-           label Name
+//-           textarea.form-control#productName(type="text" name="productName" value="product.productID" v-model="productName")
+//-         .form-group
+//-           label Description
+//-           textarea.form-control#productDescription(type="text" name="productDescription" v-model="productDescription")
+//-         .form-group
+//-           label Quantity
+//-           textarea.form-control#productQuantity(type="text" name="productQuantity" v-model="productQuantity")
+//-         .form-group
+//-           label Price
+//-           textarea.form-control#productPrice(type="text" name ="productPrice" v-model="productPrice")
+ 
+//-       .modal-footer
+//-         button.btn.btn-default(type='button' data-dismiss='modal') Update
+//-         button.btn.btn-danger(type='button' data-dismiss='modal') Close
+
+
+script(src="/axios.min.js")
+script(src="/vue.js")
+script(src="/shop-vue.js")
+  
+
+   
