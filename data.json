@@ -1,11 +1,75 @@
 {
 	"products": [
 		{
+			"productID": 1,
+			"productName": "Laptop",
+			"productDescription": "Asus",
+			"productQuantity": "1",
+			"productPrice": "20000"
+		},
+		{
+			"productID": 2,
+			"productName": "Xiaomi Redmi",
+			"productDescription": "ANdroid",
+			"productQuantity": "10",
+			"productPrice": "4300"
+		},
+		{
+			"productID": 3,
+			"productName": "Jacket",
+			"productDescription": "Red",
+			"productQuantity": "100",
+			"productPrice": "500"
+		},
+		{
+			"productID": 4,
+			"productName": "Bag",
+			"productDescription": "Leather",
+			"productQuantity": "2",
+			"productPrice": "2000"
+		},
+		{
 			"productID": 5,
-			"productName": "mvxlcvmxc",
-			"productDescription": "dmlxf",
-			"productQuantity": "g;lfg",
-			"productPrice": "fsd;lfksd;flsdk"
+			"productName": "Towel",
+			"productDescription": "Bathing",
+			"productQuantity": "90",
+			"productPrice": "100"
+		},
+		{
+			"productID": 6,
+			"productName": "Glasses",
+			"productDescription": "EO",
+			"productQuantity": "10",
+			"productPrice": "1000"
+		},
+		{
+			"productID": 7,
+			"productName": "Ring",
+			"productDescription": "Wedding",
+			"productQuantity": "10000",
+			"productPrice": "20"
+		}
+	],
+	"carts": [
+		{
+			"productName": "Flash Drive",
+			"productQuantity": "",
+			"productPrice": "Flash Drive"
+		},
+		{
+			"productName": "Flash Drive",
+			"productQuantity": "",
+			"productPrice": "400"
+		},
+		{
+			"productName": "Flash Drive",
+			"productQuantity": "",
+			"productPrice": "400"
+		},
+		{
+			"productName": "Flash Drive",
+			"productQuantity": "",
+			"productPrice": "400"
 		}
 	]
 }

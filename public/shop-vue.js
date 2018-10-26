@@ -10,7 +10,9 @@
       updateproductDescription: null,
       updateproductQuantity:null,
       updateproductPrice:null,
-      products: []
+      products: [],
+      carts: []
+
     },
     created: function() {
       var self = this;
@@ -44,13 +46,58 @@
           .catch(function(err) {
           });
       },
+      addcart: function(product) {
+   
+        var self = this;
+        var payload = {
+          productName: document.getElementById("cartName").value,
+          productQuantity: document.getElementById("cartQuantity").value,
+          productPrice: document.getElementById("cartPrice").value
+        };
+        axios.post('/api/carts', payload)
+          .then(function(res) {
+            self.carts = res.data;
+           
+          })
+          .catch(function(err) {
+          });
+      },
       clear: function() {
-        axios.put('/api/products/' + product.productID)
+        
         this.productName = null;
         this.productDescription = null;
         this.productQuantity = null;
         this.productPrice = null;
       },
+      increaseValue() {
+        var value = parseInt(document.getElementById('productQuantitymain').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        document.getElementById('productQuantitymain').value = value;
+      },
+      decreaseValue() {
+        var value = parseInt(document.getElementById('productQuantitymain').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value < 1 ? value = 1 : '';
+        value--;
+        document.getElementById('productQuantitymain').value = value;
+        
+        
+      },
+      editproduct: function(product) {
+        
+    
+        var self = this;
+        
+        
+        axios.put('/api/products/' + product.productID)
+        .then(function(res) {
+      
+        })
+        .catch(function(err) {
+        });
+      },
+
       editview: function(product) {
         this.updateproductName = product.productName;
         this.updateproductDescription =  product.productDescription;
@@ -58,28 +105,14 @@
         this.updateproductPrice =  product.productPrice;
       },
 
-      editproduct: function(product) {
-        alert(product);
-        var self = this;
-        axios.put('/api/products/' + product.productID)
-        .then(function(res) {
-          var index = 1;
-          for(var i = 0; i < self.products.length; ++i) {
-            if(Number(self.products[i].productID) === Number(product.productID)) {
-              index = i;
-              break;
-            }
-          }
-          self.products.splice(index, 1);
-        })
-        .catch(function(err) {
-        });
-      },
-
+     
       deleteproduct: function(product) {
+        
         var self = this;
         axios.delete('/api/products/' + product.productID)
+        
           .then(function(res) {
+            
             // self.products = res.data;
             var index = -1;
             for(var i = 0; i < self.products.length; ++i) {
@@ -97,4 +130,5 @@
   });
   console.log(shopVue);
 })();
+
 

@@ -6,14 +6,19 @@ const express = require('express');
 const router = express.Router(); //eslint-disable-line
 const SimpleJsonStore = require('simple-json-store');
 
-const store = new SimpleJsonStore('./data.json', { products: [] });
+const store = new SimpleJsonStore('./data.json', { products: [] } , { carts: [] });
+
 
 router.get('/', (req, res, next) => {
     console.log('Index page only');
     next();
   }, (req, res) => {
+
+  
     res.json(store.get('products'));
+    
   });
+  
   
   router.get('/:id', (req, res) => {
     let product = {};
@@ -31,19 +36,29 @@ router.get('/', (req, res, next) => {
       productQuantity: req.body.productQuantity,
       productPrice: req.body.productPrice
     };
+    
 
     products.push(newProduct);
     store.set('products', products);
   
     res.json(products);
+
+
   });
 
+
+  
+
+
   router.put('/:id', (req, res) => {
+   
     const id = req.params.id;
     const products = store.get('products');
-  
+
     for(let i = 0; i < products.length; i++) {
+     
       if(products[i].productID === id) {
+       
         products[i].productName = req.body.productName;
         products[i].productDescription = req.body.productDescription;
         products[i].productQuantity = req.body.productQuantity;
@@ -51,10 +66,10 @@ router.get('/', (req, res, next) => {
         break;
       }
     }
-  
-    products.push(newProduct);
+    console.log('try');
     store.set('products', products);
     res.json(store.get('products'));
+   
   });
   
   router.delete('/:id', (req, res) => {

@@ -1,0 +1,62 @@
+
+link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+link(rel="stylesheet" href="/mainpage.css")
+link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet")
+<body>
+main#shopVue(role="main" class="")
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">ShopHub Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+        </ul>
+    <div> <a href="/admin" style="float:right">Switch to Admin</a> </div>
+    </div>
+    </nav>
+
+    <div class="main-container">
+     <table class="" id="productsTable">
+        <tr v-for="product in products" class="products">
+            <td><input type="hidden" id="cartID" v-model="product.productID"></td>
+            <td><input type="hidden"  id="cartName"  v-model="product.productName"></td>
+            <td><input type="hidden"  id="cartPrice" v-model="product.productPrice"></td>
+            <td><input type="hidden"  id="cartQuantity"  v-model="product.prodcutQuantity"></td>
+            <td class="productpricture"  > </td>
+            <td class="productname">{{ product.productName }}</td>
+            <td class="productprice">₱{{ product.productPrice }}</td>
+            <td class="productquantity">Stock :{{ product.productQuantity }}</td>
+            <td class="controls">
+               <form>
+                <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                <input type="number" id="number" value="0" />
+                <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+               </form>
+            </td>
+            
+            <td class="productcart">
+                <button class="addtocart" v-on:click="addcart(product)">Add to Cart</button>
+            </td>
+        </tr>
+            
+     </table>
+    </div>
+
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+script(src="/axios.min.js")
+script(src="/vue.js")
+script(src="/main.js")
+script(src="/forms.js")
+script(src="/shop-vue.js")
