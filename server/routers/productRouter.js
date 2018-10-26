@@ -1,6 +1,7 @@
 /**
  * notesRouter.js
  */
+
 const express = require('express');
 const router = express.Router(); //eslint-disable-line
 const SimpleJsonStore = require('simple-json-store');
@@ -51,6 +52,7 @@ router.get('/', (req, res, next) => {
       }
     }
   
+    products.push(newProduct);
     store.set('products', products);
     res.json(store.get('products'));
   });

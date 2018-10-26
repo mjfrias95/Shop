@@ -14,6 +14,7 @@ router.get('/', function getIndexPage(req, res) {
   res.render('admin.pug', viewModel);
 });
 
+
 router.post('/', function submitproducts(req, res) {
   // Process: Get products from json -> Add new product -> Save the products
   let products = store.get('products');
@@ -29,5 +30,6 @@ router.post('/', function submitproducts(req, res) {
   // More on redirection: https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections
   res.redirect('/');
 });
+
 
 module.exports = router;

@@ -5,10 +5,10 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
     title= title
 
-
+    
     link(rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
-
+    link(rel="stylesheet" href="/forms.css")
   body
     main#shopVue(role="main" class="container")
       h1#pageTitle Welcome to Online Shopepee
@@ -28,6 +28,23 @@ html(lang="en")
         .form-group
           button.btn.btn-primary(type="button" v-on:click="addproduct") Add Product
           button.btn#clearBtn(type="button" v-on:click="clear") Clear
+
+      form#updateProductForm(action="/" method="POST")
+        .form-group
+          label Name
+          textarea.form-control#productName(type="text" name="productName" v-model="updateproductName")
+        .form-group
+          label Description
+          textarea.form-control#productDescription(type="text" name="productDescription" v-model="updateproductDescription")
+        .form-group
+          label Quantity
+          textarea.form-control#productQuantity(type="text" name="productQuantity" v-model="updateproductQuantity")
+        .form-group
+          label Price
+          textarea.form-control#productPrice(type="text" name ="productPrice" v-model="updateproductPrice")
+        .form-group
+          button.btn.btn-primary(type="button" v-on:click="editproduct(product)") Update Product
+          button.btn#clearBtn(type="button" onclick="closeBut()" ) Cancel
       section
         table.table#productsTable
           tr
@@ -44,7 +61,7 @@ html(lang="en")
             td {{ product.productQuantity }}
             td {{ product.productPrice }}
             td
-                 button.btn.btn-default(v-on:click="editproduct(product)" /*data-toggle="modal" data-target="#myModal"*/ ) Edit
+                 button.btn.btn-default( id="editButton" onclick="editBut()" v-on:click="editview(product)" /*data-toggle="modal" data-target="#myModal"*/ ) Edit
                
                  button.btn.btn-danger(v-on:click="deleteproduct(product)") Delete
      
@@ -82,6 +99,7 @@ script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'
 
 script(src="/axios.min.js")
 script(src="/vue.js")
+script(src="/forms.js")
 script(src="/shop-vue.js")
   
 

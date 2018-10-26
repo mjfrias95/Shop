@@ -6,6 +6,10 @@
       productDescription: null,
       productQuantity:null,
       productPrice:null,
+      updateproductName: null,
+      updateproductDescription: null,
+      updateproductQuantity:null,
+      updateproductPrice:null,
       products: []
     },
     created: function() {
@@ -47,15 +51,32 @@
         this.productQuantity = null;
         this.productPrice = null;
       },
-      editproduct: function(product) {
-        this.productName = product.productName;
-        this.productDescription =  product.productDescription;
-        this.productQuantity =  product.productQuantity;
-        this.productPrice =  product.productPrice;
-
+      editview: function(product) {
+        this.updateproductName = product.productName;
+        this.updateproductDescription =  product.productDescription;
+        this.updateproductQuantity =  product.productQuantity;
+        this.updateproductPrice =  product.productPrice;
       },
+
+      editproduct: function(product) {
+        alert(product);
+        var self = this;
+        axios.put('/api/products/' + product.productID)
+        .then(function(res) {
+          var index = 1;
+          for(var i = 0; i < self.products.length; ++i) {
+            if(Number(self.products[i].productID) === Number(product.productID)) {
+              index = i;
+              break;
+            }
+          }
+          self.products.splice(index, 1);
+        })
+        .catch(function(err) {
+        });
+      },
+
       deleteproduct: function(product) {
-       
         var self = this;
         axios.delete('/api/products/' + product.productID)
           .then(function(res) {
